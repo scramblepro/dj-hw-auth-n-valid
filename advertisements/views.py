@@ -3,7 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 from django_filters.rest_framework import DjangoFilterBackend
 from advertisements.models import Advertisement
 from advertisements.serializers import AdvertisementSerializer
-from advertisements.filters import AdvertisementFilter  # если используется кастомный фильтр
+from advertisements.filters import AdvertisementFilter
 
 
 class AdvertisementViewSet(ModelViewSet):
@@ -12,8 +12,7 @@ class AdvertisementViewSet(ModelViewSet):
     queryset = Advertisement.objects.all()
     serializer_class = AdvertisementSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_class = AdvertisementFilter  # если используется кастомный фильтр
-    filterset_fields = ['status', 'created_at']
+    filterset_class = AdvertisementFilter
 
     def get_permissions(self):
         """Получение прав для действий."""
